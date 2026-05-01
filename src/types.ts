@@ -29,6 +29,8 @@ export type Genre =
   | 'eyewear'
   | 'general';
 
+export type Coords = { lat: number; lng: number };
+
 export type Shop = {
   id: string;
   name: string;
@@ -36,6 +38,7 @@ export type Shop = {
   area: string;
   address?: string;
   station?: string;
+  coords?: Coords;
   brands: string[];
   target_gender: Gender;
   price_range: PriceRange;

@@ -1,10 +1,14 @@
 import { shops } from '../data/shops';
+import { shopCoords } from '../data/coords';
 import type { Shop } from '../types';
 
-export const allShops: Shop[] = shops;
+export const allShops: Shop[] = shops.map((s) => ({
+  ...s,
+  coords: shopCoords[s.id] ?? s.coords,
+}));
 
 export const allAreas: string[] = Array.from(
-  new Set(shops.map((s) => s.area))
+  new Set(allShops.map((s) => s.area))
 ).sort();
 
 export type BrandRow = {
@@ -14,7 +18,7 @@ export type BrandRow = {
 };
 
 const brandMap = new Map<string, Set<string>>();
-for (const shop of shops) {
+for (const shop of allShops) {
   for (const brand of shop.brands) {
     const key = brand;
     if (!brandMap.has(key)) brandMap.set(key, new Set());
@@ -31,11 +35,11 @@ export const allBrands: BrandRow[] = Array.from(brandMap.entries())
   .sort((a, b) => b.shopCount - a.shopCount || a.name.localeCompare(b.name));
 
 export function getShopById(id: string): Shop | undefined {
-  return shops.find((s) => s.id === id);
+  return allShops.find((s) => s.id === id);
 }
 
 export function getShopsByBrand(brandName: string): Shop[] {
-  return shops.filter((s) => s.brands.includes(brandName));
+  return allShops.filter((s) => s.brands.includes(brandName));
 }
 
 export function getBrandRow(name: string): BrandRow | undefined {

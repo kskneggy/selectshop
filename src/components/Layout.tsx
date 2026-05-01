@@ -10,6 +10,7 @@ export function Layout() {
           </Link>
           <nav className="flex gap-4 text-sm text-neutral-500">
             <Link to="/" className="hover:text-neutral-900">ショップ</Link>
+            <Link to="/map" className="hover:text-neutral-900">マップ</Link>
             <Link to="/brands" className="hover:text-neutral-900">ブランド</Link>
             <Link to="/about" className="hover:text-neutral-900">About</Link>
           </nav>
