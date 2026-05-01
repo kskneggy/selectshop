@@ -21,7 +21,7 @@ export function BrandDetail() {
       <Link to="/" className="text-sm text-neutral-500 hover:text-neutral-900">← 一覧へ</Link>
       <header className="mt-3 mb-6 pb-6 border-b border-neutral-200">
         <div className="text-sm text-neutral-500 mb-1">ブランド横断検索</div>
-        <h1 className="text-3xl font-semibold tracking-tight">{brandName}</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight break-words">{brandName}</h1>
         <p className="text-sm text-neutral-500 mt-2">
           このブランドを扱う {shops.length} 店
         </p>

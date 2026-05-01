@@ -15,24 +15,53 @@ export type BrandRow = {
   name: string;
   shopCount: number;
   shopIds: string[];
+  areas: string[];
+  topAudienceTags: string[];
+  initial: string;
 };
 
-const brandMap = new Map<string, Set<string>>();
+function getInitial(name: string): string {
+  const ch = name.trim().charAt(0).toUpperCase();
+  if (/^[A-Z]$/.test(ch)) return ch;
+  return '#';
+}
+
+const brandShops = new Map<string, Shop[]>();
 for (const shop of allShops) {
   for (const brand of shop.brands) {
-    const key = brand;
-    if (!brandMap.has(key)) brandMap.set(key, new Set());
-    brandMap.get(key)!.add(shop.id);
+    if (!brandShops.has(brand)) brandShops.set(brand, []);
+    brandShops.get(brand)!.push(shop);
   }
 }
 
-export const allBrands: BrandRow[] = Array.from(brandMap.entries())
-  .map(([name, set]) => ({
-    name,
-    shopCount: set.size,
-    shopIds: Array.from(set),
-  }))
+export const allBrands: BrandRow[] = Array.from(brandShops.entries())
+  .map(([name, shopsForBrand]) => {
+    const tagCount = new Map<string, number>();
+    for (const s of shopsForBrand) {
+      for (const t of s.audience_tags) tagCount.set(t, (tagCount.get(t) ?? 0) + 1);
+    }
+    const topAudienceTags = Array.from(tagCount.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([t]) => t);
+    return {
+      name,
+      shopCount: shopsForBrand.length,
+      shopIds: shopsForBrand.map((s) => s.id),
+      areas: Array.from(new Set(shopsForBrand.map((s) => s.area))),
+      topAudienceTags,
+      initial: getInitial(name),
+    };
+  })
   .sort((a, b) => b.shopCount - a.shopCount || a.name.localeCompare(b.name));
+
+export const brandInitials: string[] = Array.from(
+  new Set(allBrands.map((b) => b.initial))
+).sort((a, b) => {
+  if (a === '#') return 1;
+  if (b === '#') return -1;
+  return a.localeCompare(b);
+});
 
 export function getShopById(id: string): Shop | undefined {
   return allShops.find((s) => s.id === id);
@@ -106,11 +135,22 @@ export const genreLabel: Record<string, string> = {
   eyewear: 'アイウェア',
 };
 
+/**
+ * 価格帯ラベル。代表的なアイテム（シャツ・ブラウス等）の中央値を目安。
+ * カジュアル(low) / ミドル(mid) / ハイ(high) / ラグジュアリー(luxury)
+ */
 export const priceLabel: Record<string, string> = {
-  low: '〜',
-  mid: '￥￥',
-  high: '￥￥￥',
-  luxury: '￥￥￥￥',
+  low: '〜¥1万',
+  mid: '¥1〜3万',
+  high: '¥3〜10万',
+  luxury: '¥10万〜',
+};
+
+export const priceLabelLong: Record<string, string> = {
+  low: 'カジュアル / 〜¥1万',
+  mid: 'ミドル / ¥1〜3万',
+  high: 'ハイ / ¥3〜10万',
+  luxury: 'ラグジュアリー / ¥10万〜',
 };
 
 export const genderLabel: Record<string, string> = {

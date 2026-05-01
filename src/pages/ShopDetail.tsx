@@ -19,7 +19,7 @@ export function ShopDetail() {
       <Link to="/" className="text-sm text-neutral-500 hover:text-neutral-900">← 一覧へ</Link>
       <header className="mt-3 mb-6 pb-6 border-b border-neutral-200">
         <div className="text-sm text-neutral-500 mb-1">{shop.area}</div>
-        <h1 className="text-3xl font-semibold tracking-tight mb-2">{shop.name}</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-2 leading-tight">{shop.name}</h1>
         {shop.name_en && shop.name_en !== shop.name && (
           <div className="text-sm text-neutral-400 font-mono">{shop.name_en}</div>
         )}
