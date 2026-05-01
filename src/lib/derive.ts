@@ -3,10 +3,31 @@ import { shopCoords } from '../data/coords';
 import { shopPhotos } from '../data/photos';
 import type { Shop } from '../types';
 
+/**
+ * ブランド名の表記揺れを正規化。同じブランドが別表記で分断されないように。
+ * 子ブランド（PURPLE LABEL / TOGA VIRILIS 等）は別エントリのまま残す。
+ */
+const brandAlias: Record<string, string> = {
+  NIKE: 'Nike',
+  NEEDLES: 'Needles',
+  'a.presse': 'A.PRESSE',
+  'Engineered Garments': 'ENGINEERED GARMENTS',
+  'NEW BALANCE': 'New Balance',
+  Salomon: 'SALOMON',
+  CLARKS: 'Clarks',
+  Pyrenex: 'PYRENEX',
+  ASICS: 'asics',
+};
+
+export function normalizeBrand(name: string): string {
+  return brandAlias[name] ?? name;
+}
+
 export const allShops: Shop[] = shops.map((s) => {
   const ph = shopPhotos[s.id];
   return {
     ...s,
+    brands: Array.from(new Set(s.brands.map(normalizeBrand))),
     coords: shopCoords[s.id] ?? s.coords,
     image_paths: ph?.image_paths ?? [],
     place_id: ph?.place_id,
@@ -22,6 +43,12 @@ export const BASE_URL: string = (import.meta as { env: { BASE_URL: string } }).e
 export const allAreas: string[] = Array.from(
   new Set(allShops.map((s) => s.area))
 ).sort();
+
+export const areaCount: Record<string, number> = (() => {
+  const m: Record<string, number> = {};
+  for (const s of allShops) m[s.area] = (m[s.area] ?? 0) + 1;
+  return m;
+})();
 
 export type BrandRow = {
   name: string;
@@ -81,6 +108,26 @@ export function getShopById(id: string): Shop | undefined {
 
 export function getShopsByBrand(brandName: string): Shop[] {
   return allShops.filter((s) => s.brands.includes(brandName));
+}
+
+/**
+ * Jaccard 類似度でターゲット店に「品揃えが近い」店を返す。
+ * Score = |A∩B| / |A∪B|（ブランド集合）
+ */
+export function similarShops(target: Shop, limit = 5): Array<{ shop: Shop; score: number; common: string[] }> {
+  const targetSet = new Set(target.brands);
+  const results: Array<{ shop: Shop; score: number; common: string[] }> = [];
+  for (const s of allShops) {
+    if (s.id === target.id) continue;
+    const otherSet = new Set(s.brands);
+    const common: string[] = [];
+    for (const b of targetSet) if (otherSet.has(b)) common.push(b);
+    const union = targetSet.size + otherSet.size - common.length;
+    if (union === 0) continue;
+    const score = common.length / union;
+    if (score > 0) results.push({ shop: s, score, common });
+  }
+  return results.sort((a, b) => b.score - a.score).slice(0, limit);
 }
 
 export function getBrandRow(name: string): BrandRow | undefined {

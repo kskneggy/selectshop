@@ -1,6 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import { getShopById, audienceTagLabel, genderLabel, genreLabel, priceLabel } from '../lib/derive';
 import { ShopImage } from '../components/ShopImage';
+import { SimilarShops } from '../components/SimilarShops';
+import { CompareToggleButton } from '../components/CompareList';
+import { SaveToggleButton } from '../components/SavedList';
 
 export function ShopDetail() {
   const { id } = useParams();
@@ -155,8 +158,15 @@ export function ShopDetail() {
         </p>
       )}
 
+      <div className="flex gap-2 mb-6">
+        <SaveToggleButton shopId={shop.id} />
+        <CompareToggleButton shopId={shop.id} />
+      </div>
+
+      <SimilarShops shop={shop} />
+
       {shop.source_urls && shop.source_urls.length > 0 && (
-        <section className="text-xs text-neutral-400 border-t border-neutral-200 pt-4">
+        <section className="text-xs text-neutral-400 border-t border-neutral-200 pt-4 mt-6">
           <div className="mb-1">情報ソース</div>
           <ul className="space-y-1">
             {shop.source_urls.map((u) => (

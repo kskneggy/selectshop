@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { APIProvider, Map, Marker, InfoWindow } from '@vis.gl/react-google-maps';
+import { APIProvider, Map, InfoWindow } from '@vis.gl/react-google-maps';
 
 import { allShops, audienceTagLabel, genderLabel, priceLabel } from '../lib/derive';
 import { applyFilter, emptyFilter } from '../lib/filter';
 import { FilterBar } from '../components/FilterBar';
 import { ShopImage } from '../components/ShopImage';
+import { ClusteredMarkers, PriceLegend } from '../components/ClusteredMarkers';
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
 const TOKYO_CENTER = { lat: 35.6605, lng: 139.7088 };
@@ -39,14 +40,7 @@ export function MapPage() {
               disableDefaultUI={false}
               style={{ height: '70vh', width: '100%' }}
             >
-              {withCoords.map((shop) => (
-                <Marker
-                  key={shop.id}
-                  position={shop.coords!}
-                  onClick={() => setOpenId(shop.id)}
-                  title={shop.name}
-                />
-              ))}
+              <ClusteredMarkers shops={withCoords} onClick={setOpenId} />
               {openShop && (
                 <InfoWindow
                   position={openShop.coords!}
@@ -105,6 +99,7 @@ export function MapPage() {
         </div>
       )}
 
+      <PriceLegend />
       {withCoords.length < filtered.length && (
         <p className="text-xs text-neutral-400 mt-2">
           ※ {filtered.length - withCoords.length} 店は座標未登録のため地図に表示されません

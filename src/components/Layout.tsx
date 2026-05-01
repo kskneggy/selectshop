@@ -5,6 +5,8 @@ const navItems = [
   { to: '/', label: 'ショップ', end: true },
   { to: '/map', label: 'マップ' },
   { to: '/brands', label: 'ブランド' },
+  { to: '/saved', label: '保存' },
+  { to: '/compare', label: '比較' },
   { to: '/about', label: 'About' },
 ];
 

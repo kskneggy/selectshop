@@ -4,6 +4,7 @@ import { allShops } from '../lib/derive';
 import { FilterBar } from '../components/FilterBar';
 import { ShopCard } from '../components/ShopCard';
 import { applyFilter, emptyFilter } from '../lib/filter';
+import { downloadCSV } from '../lib/csv';
 
 export function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,13 +24,23 @@ export function SearchPage() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight mb-1">
-          首都圏のセレクトショップ {allShops.length} 店
-        </h1>
-        <p className="text-sm text-neutral-500">
-          ブランド・エリア・テイスト・価格帯で横断検索。プロ向け。
-        </p>
+      <div className="mb-5 flex items-baseline justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight mb-1">
+            首都圏のセレクトショップ <span className="text-neutral-400 text-base font-normal">{allShops.length}</span>
+          </h1>
+          <p className="text-sm text-neutral-500">
+            ブランド・エリア・テイスト・価格帯で横断検索。プロ向け。
+          </p>
+        </div>
+        <button
+          onClick={() => downloadCSV(filtered, `selectshop-${new Date().toISOString().slice(0, 10)}.csv`)}
+          className="text-xs px-3 py-2 border border-neutral-300 rounded-lg hover:border-neutral-900 active:bg-neutral-100 min-h-[36px] whitespace-nowrap"
+          disabled={filtered.length === 0}
+          title="絞り込み結果をCSVでダウンロード"
+        >
+          ⬇ CSV
+        </button>
       </div>
       <FilterBar filter={filter} setFilter={setFilterAndUrl} resultCount={filtered.length} />
       {filtered.length === 0 ? (

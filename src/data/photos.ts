@@ -809,5 +809,287 @@ export const shopPhotos: Record<string, ShopPhotos> = {
     "attributions": [
       "VINTAGE QOO TOKYO"
     ]
+  },
+  "arts-and-science-marunouchi": {
+    "place_id": "ChIJvWV9tvmLGGARqzwHYfZMezQ",
+    "google_maps_uri": "https://maps.google.com/?cid=3781700933181193387&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.2,
+    "user_rating_count": 18,
+    "image_paths": [
+      "images/shops/arts-and-science-marunouchi/1.jpg",
+      "images/shops/arts-and-science-marunouchi/2.jpg"
+    ],
+    "attributions": [
+      "⸝⸝",
+      "김다정"
+    ]
+  },
+  "dover-street-market-ginza": {
+    "place_id": "ChIJCyrxGuaLGGARJWVsJlwEERU",
+    "google_maps_uri": "https://maps.google.com/?cid=1517999343228708133&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.2,
+    "user_rating_count": 1427,
+    "image_paths": [
+      "images/shops/dover-street-market-ginza/1.jpg",
+      "images/shops/dover-street-market-ginza/2.jpg",
+      "images/shops/dover-street-market-ginza/3.jpg"
+    ],
+    "attributions": [
+      "にゃんこゴールド",
+      "s s",
+      "일비"
+    ]
+  },
+  "beams-ginza": {
+    "place_id": "ChIJnQkV0uWLGGARSmJCrTTldXM",
+    "google_maps_uri": "https://maps.google.com/?cid=8319807901044728394&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.5,
+    "user_rating_count": 1531,
+    "image_paths": [
+      "images/shops/beams-ginza/1.jpg",
+      "images/shops/beams-ginza/2.jpg",
+      "images/shops/beams-ginza/3.jpg"
+    ],
+    "attributions": [
+      "ビームス 銀座"
+    ]
+  },
+  "ships-ginza": {
+    "place_id": "ChIJR61gMeSLGGAR0cw_A8BtPF0",
+    "google_maps_uri": "https://maps.google.com/?cid=6718365415585598673&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.8,
+    "user_rating_count": 121,
+    "image_paths": [
+      "images/shops/ships-ginza/1.jpg",
+      "images/shops/ships-ginza/2.jpg",
+      "images/shops/ships-ginza/3.jpg"
+    ],
+    "attributions": [
+      "齊藤実",
+      "@ Your Service TICK.Y",
+      "Available Now"
+    ]
+  },
+  "undercover-ginza-six": {
+    "place_id": "ChIJfUtnTuaLGGARAvRVsWhfnTg",
+    "google_maps_uri": "https://maps.google.com/?cid=4079521740723975170&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4,
+    "user_rating_count": 15,
+    "image_paths": [
+      "images/shops/undercover-ginza-six/1.jpg",
+      "images/shops/undercover-ginza-six/2.jpg",
+      "images/shops/undercover-ginza-six/3.jpg"
+    ],
+    "attributions": [
+      "Kaoru Yamazaki (kabo)",
+      "OMG vishesh"
+    ]
+  },
+  "soph-ginza-six": {
+    "place_id": "ChIJp_yHYwCLGGARUUYj5Qarr-o",
+    "google_maps_uri": "https://maps.google.com/?cid=16910923171901949521&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 5,
+    "user_rating_count": 1,
+    "image_paths": [],
+    "attributions": []
+  },
+  "mastermind-tokyo-hibiya": {
+    "place_id": "ChIJXRcxO-6LGGARnD-33XdDMTc",
+    "google_maps_uri": "https://maps.google.com/?cid=3977034128044801948&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.4,
+    "user_rating_count": 36,
+    "image_paths": [
+      "images/shops/mastermind-tokyo-hibiya/1.jpg",
+      "images/shops/mastermind-tokyo-hibiya/2.jpg",
+      "images/shops/mastermind-tokyo-hibiya/3.jpg"
+    ],
+    "attributions": [
+      "sho sugino",
+      "Rexton Wendell",
+      "Thor James"
+    ]
+  },
+  "tatras-concept-store-hibiya": {
+    "place_id": "ChIJXdtvOu6LGGARAuMJhGohRik",
+    "google_maps_uri": "https://maps.google.com/?cid=2974101345290281730&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.3,
+    "user_rating_count": 22,
+    "image_paths": [
+      "images/shops/tatras-concept-store-hibiya/1.jpg",
+      "images/shops/tatras-concept-store-hibiya/2.jpg",
+      "images/shops/tatras-concept-store-hibiya/3.jpg"
+    ],
+    "attributions": [
+      "YUJI YAMASHITA",
+      "日本侍"
+    ]
+  },
+  "hankyu-mens-tokyo": {
+    "place_id": "ChIJtYDIYuWLGGAR1GQCeK5D6Xk",
+    "google_maps_uri": "https://maps.google.com/?cid=8784626964779656404&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.9,
+    "user_rating_count": 2734,
+    "image_paths": [
+      "images/shops/hankyu-mens-tokyo/1.jpg",
+      "images/shops/hankyu-mens-tokyo/2.jpg",
+      "images/shops/hankyu-mens-tokyo/3.jpg"
+    ],
+    "attributions": [
+      "阪急メンズ東京",
+      "Manhui Lee"
+    ]
+  },
+  "beams-japan-shinjuku": {
+    "place_id": "ChIJUWbOAtuMGGARxbNeo0uzhuo",
+    "google_maps_uri": "https://maps.google.com/?cid=16899391789199176645&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.3,
+    "user_rating_count": 1644,
+    "image_paths": [
+      "images/shops/beams-japan-shinjuku/1.jpg",
+      "images/shops/beams-japan-shinjuku/2.jpg",
+      "images/shops/beams-japan-shinjuku/3.jpg"
+    ],
+    "attributions": [
+      "ビームス ジャパン",
+      "ハニーワッフル",
+      "Spencer"
+    ]
+  },
+  "isetan-mens-shinjuku": {
+    "place_id": "ChIJSzlrpduMGGARD1J1NHhDgzQ",
+    "google_maps_uri": "https://maps.google.com/?cid=3783942295476589071&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.1,
+    "user_rating_count": 3807,
+    "image_paths": [
+      "images/shops/isetan-mens-shinjuku/1.jpg",
+      "images/shops/isetan-mens-shinjuku/2.jpg",
+      "images/shops/isetan-mens-shinjuku/3.jpg"
+    ],
+    "attributions": [
+      "K daw",
+      "T. K."
+    ]
+  },
+  "wism-shinjuku": {
+    "place_id": "ChIJV4v3x9qMGGAR38KxZ5RBKvc",
+    "google_maps_uri": "https://maps.google.com/?cid=17810119782040715999&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.3,
+    "user_rating_count": 15,
+    "image_paths": [
+      "images/shops/wism-shinjuku/1.jpg",
+      "images/shops/wism-shinjuku/2.jpg",
+      "images/shops/wism-shinjuku/3.jpg"
+    ],
+    "attributions": [
+      "Manhui Lee",
+      "にゃんこゴールド"
+    ]
+  },
+  "estnation-yurakucho": {
+    "place_id": "ChIJrY8D4u-LGGARU_dn2R68Kl0",
+    "google_maps_uri": "https://maps.google.com/?cid=6713385035231655763&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.9,
+    "user_rating_count": 92,
+    "image_paths": [
+      "images/shops/estnation-yurakucho/1.jpg",
+      "images/shops/estnation-yurakucho/2.jpg",
+      "images/shops/estnation-yurakucho/3.jpg"
+    ],
+    "attributions": [
+      "エストネーション有楽町店",
+      "kotomi “cotty.”",
+      "Shahbaz Hussain"
+    ]
+  },
+  "beams-house-marunouchi": {
+    "place_id": "ChIJOUOd8vmLGGARauFiuVv3CnY",
+    "google_maps_uri": "https://maps.google.com/?cid=8505882819566952810&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.8,
+    "user_rating_count": 183,
+    "image_paths": [
+      "images/shops/beams-house-marunouchi/1.jpg",
+      "images/shops/beams-house-marunouchi/2.jpg",
+      "images/shops/beams-house-marunouchi/3.jpg"
+    ],
+    "attributions": [
+      "ビームス ハウス 丸の内",
+      "よ（柴犬よしぷー）"
+    ]
+  },
+  "beams-plus-yurakucho": {
+    "place_id": "ChIJB8H_EPCLGGARCgrVgWdivDA",
+    "google_maps_uri": "https://maps.google.com/?cid=3511790006141520394&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.8,
+    "user_rating_count": 302,
+    "image_paths": [
+      "images/shops/beams-plus-yurakucho/1.jpg",
+      "images/shops/beams-plus-yurakucho/2.jpg",
+      "images/shops/beams-plus-yurakucho/3.jpg"
+    ],
+    "attributions": [
+      "齊藤実",
+      "Kane Chao",
+      "ビームス プラス 丸の内"
+    ]
+  },
+  "the-tokyo-marunouchi": {
+    "place_id": "ChIJk7NfTRiLGGAR6LiYBNSHSpE",
+    "google_maps_uri": "https://maps.google.com/?cid=10469329628456073448&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.6,
+    "user_rating_count": 22,
+    "image_paths": [
+      "images/shops/the-tokyo-marunouchi/1.jpg",
+      "images/shops/the-tokyo-marunouchi/2.jpg",
+      "images/shops/the-tokyo-marunouchi/3.jpg"
+    ],
+    "attributions": [
+      "THE TOKYO 丸の内"
+    ]
+  },
+  "tomorrowland-marunouchi": {
+    "place_id": "ChIJoR8MA_qLGGAR6dlwIv7Xloc",
+    "google_maps_uri": "https://maps.google.com/?cid=9770233928126355945&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4,
+    "user_rating_count": 88,
+    "image_paths": [
+      "images/shops/tomorrowland-marunouchi/1.jpg",
+      "images/shops/tomorrowland-marunouchi/2.jpg",
+      "images/shops/tomorrowland-marunouchi/3.jpg"
+    ],
+    "attributions": [
+      "トゥモローランド 丸の内店",
+      "Key jetsetter",
+      "木村恵"
+    ]
+  },
+  "land-of-tomorrow-marunouchi": {
+    "place_id": "ChIJk1E6c_qLGGAR3tyzG5KwvvU",
+    "google_maps_uri": "https://maps.google.com/?cid=17707784926443855070&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.2,
+    "user_rating_count": 23,
+    "image_paths": [
+      "images/shops/land-of-tomorrow-marunouchi/1.jpg",
+      "images/shops/land-of-tomorrow-marunouchi/2.jpg",
+      "images/shops/land-of-tomorrow-marunouchi/3.jpg"
+    ],
+    "attributions": [
+      "ランド オブ トゥモロー 丸の内店"
+    ]
+  },
+  "le-dome-marunouchi": {
+    "place_id": "ChIJmZswGPqLGGARycqJM8cYl-I",
+    "google_maps_uri": "https://maps.google.com/?cid=16327546217897249481&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.1,
+    "user_rating_count": 37,
+    "image_paths": [
+      "images/shops/le-dome-marunouchi/1.jpg",
+      "images/shops/le-dome-marunouchi/2.jpg",
+      "images/shops/le-dome-marunouchi/3.jpg"
+    ],
+    "attributions": [
+      "Le Dome 丸の内店(EDIFICE/IENA)",
+      "清水（及川）まゆみ",
+      "s t"
+    ]
   }
 };

@@ -69,4 +69,29 @@ export const shopCoords: Record<string, Coords> = {
   // 六本木 / 乃木坂
   'estnation-roppongi': { lat: 35.6604, lng: 139.7292 },
   'restir-nogizaka': { lat: 35.6655, lng: 139.7290 },
+
+  // 銀座 / 有楽町 / 日比谷
+  'dover-street-market-ginza': { lat: 35.6699, lng: 139.7613 },
+  'beams-ginza': { lat: 35.6740, lng: 139.7672 },
+  'ships-ginza': { lat: 35.6708, lng: 139.7615 },
+  'undercover-ginza-six': { lat: 35.6694, lng: 139.7625 },
+  'soph-ginza-six': { lat: 35.6694, lng: 139.7625 },
+  'mastermind-tokyo-hibiya': { lat: 35.6735, lng: 139.7596 },
+  'tatras-concept-store-hibiya': { lat: 35.6735, lng: 139.7596 },
+  'hankyu-mens-tokyo': { lat: 35.6754, lng: 139.7626 },
+
+  // 新宿
+  'beams-japan-shinjuku': { lat: 35.6920, lng: 139.7050 },
+  'isetan-mens-shinjuku': { lat: 35.6920, lng: 139.7060 },
+  'wism-shinjuku': { lat: 35.6900, lng: 139.7048 },
+
+  // 丸の内
+  'arts-and-science-marunouchi': { lat: 35.6824, lng: 139.7669 },
+  'estnation-yurakucho': { lat: 35.6750, lng: 139.7637 },
+  'beams-house-marunouchi': { lat: 35.6810, lng: 139.7660 },
+  'beams-plus-yurakucho': { lat: 35.6741, lng: 139.7637 },
+  'the-tokyo-marunouchi': { lat: 35.6810, lng: 139.7660 },
+  'tomorrowland-marunouchi': { lat: 35.6810, lng: 139.7660 },
+  'land-of-tomorrow-marunouchi': { lat: 35.6810, lng: 139.7660 },
+  'le-dome-marunouchi': { lat: 35.6810, lng: 139.7660 },
 };
