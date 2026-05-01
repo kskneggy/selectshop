@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filter';
-import { sortLabel } from '../lib/filter';
+import { sortDescription, sortLabel } from '../lib/filter';
 import {
   allAreas,
   allAudienceTags,
@@ -230,19 +230,24 @@ export function FilterBar({ filter, setFilter, resultCount, showSort = true }: P
       )}
 
       {showSort && (
-        <div className="flex items-center gap-2 text-xs">
-          <span className="text-neutral-500">並び順:</span>
-          <select
-            value={filter.sort}
-            onChange={(e) => setFilter({ ...filter, sort: e.target.value as FilterState['sort'] })}
-            className="px-2 py-1.5 border border-neutral-300 rounded bg-white min-h-[36px] text-xs"
-          >
-            {sortKeys.map((k) => (
-              <option key={k} value={k}>
-                {sortLabel[k]}
-              </option>
-            ))}
-          </select>
+        <div className="space-y-1">
+          <div className="flex items-center gap-2 text-xs">
+            <span className="text-neutral-500">並び順:</span>
+            <select
+              value={filter.sort}
+              onChange={(e) => setFilter({ ...filter, sort: e.target.value as FilterState['sort'] })}
+              className="px-2 py-1.5 border border-neutral-300 rounded bg-white min-h-[36px] text-xs"
+            >
+              {sortKeys.map((k) => (
+                <option key={k} value={k}>
+                  {sortLabel[k]}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="text-[11px] text-neutral-400 pl-12">
+            {sortDescription[filter.sort]}
+          </div>
         </div>
       )}
 

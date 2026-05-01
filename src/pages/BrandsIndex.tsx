@@ -2,26 +2,37 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { clsx } from 'clsx';
 import {
-  allAreas,
-  allBrands,
+  allShops,
   audienceTagLabel,
   brandInitials,
+  brandsFromShops,
+  type BrandRow,
 } from '../lib/derive';
+import { applyFilter, emptyFilter } from '../lib/filter';
+import { FilterBar } from '../components/FilterBar';
 
 type Sort = 'popular' | 'alpha';
 
+function getInitial(name: string): string {
+  const ch = name.trim().charAt(0).toUpperCase();
+  if (/^[A-Z]$/.test(ch)) return ch;
+  return '#';
+}
+
 export function BrandsIndex() {
+  const [filter, setFilter] = useState({ ...emptyFilter });
   const [q, setQ] = useState('');
   const [sort, setSort] = useState<Sort>('popular');
   const [initial, setInitial] = useState<string | null>(null);
-  const [areaFilter, setAreaFilter] = useState<string[]>([]);
 
-  const filtered = useMemo(() => {
+  const filteredShops = useMemo(() => applyFilter(allShops, filter), [filter]);
+  const brandsForCurrent = useMemo(() => brandsFromShops(filteredShops), [filteredShops]);
+
+  const filteredBrands = useMemo(() => {
     const query = q.trim().toLowerCase();
-    let rows = allBrands.filter((b) => {
+    let rows = brandsForCurrent.filter((b) => {
       if (query && !b.name.toLowerCase().includes(query)) return false;
       if (initial && b.initial !== initial) return false;
-      if (areaFilter.length && !areaFilter.some((a) => b.areas.includes(a))) return false;
       return true;
     });
     rows = [...rows].sort((a, b) => {
@@ -36,29 +47,38 @@ export function BrandsIndex() {
       return b.shopCount - a.shopCount || a.name.localeCompare(b.name);
     });
     return rows;
-  }, [q, sort, initial, areaFilter]);
+  }, [brandsForCurrent, q, sort, initial]);
 
   const grouped = useMemo(() => {
     if (sort !== 'alpha') return null;
-    const groups = new Map<string, typeof filtered>();
-    for (const b of filtered) {
+    const groups = new Map<string, typeof filteredBrands>();
+    for (const b of filteredBrands) {
       if (!groups.has(b.initial)) groups.set(b.initial, []);
       groups.get(b.initial)!.push(b);
     }
     return Array.from(groups.entries());
-  }, [sort, filtered]);
+  }, [sort, filteredBrands]);
 
-  const toggleArea = (a: string) =>
-    setAreaFilter((prev) => (prev.includes(a) ? prev.filter((x) => x !== a) : [...prev, a]));
+  const initialsForCurrent = useMemo(() => {
+    return Array.from(new Set(filteredBrands.map((b) => b.initial))).sort((a, b) => {
+      if (a === '#') return 1;
+      if (b === '#') return -1;
+      return a.localeCompare(b);
+    });
+  }, [filteredBrands]);
 
   return (
     <div>
       <header className="mb-5">
         <h1 className="text-2xl font-semibold tracking-tight mb-1">
-          ブランド <span className="text-neutral-400 text-base font-normal">({allBrands.length})</span>
+          ブランド <span className="text-neutral-400 text-base font-normal">({brandsForCurrent.length})</span>
         </h1>
-        <p className="text-sm text-neutral-500">タップで「そのブランドを扱う店」一覧へ。</p>
+        <p className="text-sm text-neutral-500">
+          ブランドをタップで「そのブランドを扱う店」一覧へ。フィルタはショップタブと同じ条件が使えます。
+        </p>
       </header>
+
+      <FilterBar filter={filter} setFilter={setFilter} resultCount={brandsForCurrent.length} showSort={false} />
 
       <div className="space-y-3 mb-5">
         <input
@@ -81,7 +101,7 @@ export function BrandsIndex() {
                 : 'bg-white text-neutral-700 border-neutral-300'
             )}
           >
-            人気順
+            取扱店多い順
           </button>
           <button
             onClick={() => setSort('alpha')}
@@ -96,7 +116,7 @@ export function BrandsIndex() {
           </button>
         </div>
 
-        {sort === 'alpha' && (
+        {sort === 'alpha' && initialsForCurrent.length > 0 && (
           <div className="-mx-4 px-4 overflow-x-auto">
             <div className="flex gap-1 min-w-max">
               <button
@@ -110,7 +130,7 @@ export function BrandsIndex() {
               >
                 ALL
               </button>
-              {brandInitials.map((c) => (
+              {initialsForCurrent.map((c) => (
                 <button
                   key={c}
                   onClick={() => setInitial(c === initial ? null : c)}
@@ -127,33 +147,17 @@ export function BrandsIndex() {
             </div>
           </div>
         )}
-
-        <div>
-          <div className="text-[11px] text-neutral-500 mb-1.5 uppercase tracking-wide">エリアで絞り込み</div>
-          <div className="flex flex-wrap gap-1.5">
-            {allAreas.map((a) => (
-              <button
-                key={a}
-                onClick={() => toggleArea(a)}
-                className={clsx(
-                  'px-2.5 py-1 text-xs rounded-full border min-h-[32px]',
-                  areaFilter.includes(a)
-                    ? 'bg-neutral-900 text-white border-neutral-900'
-                    : 'bg-white text-neutral-700 border-neutral-300'
-                )}
-              >
-                {a}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       <div className="text-xs text-neutral-500 mb-3">
-        {filtered.length} / {allBrands.length} ブランド
+        {filteredBrands.length} ブランドを表示
       </div>
 
-      {grouped ? (
+      {filteredBrands.length === 0 ? (
+        <div className="border border-dashed border-neutral-300 rounded-lg py-16 text-center text-neutral-500">
+          条件に合うブランドがありません
+        </div>
+      ) : grouped ? (
         <div className="space-y-6">
           {grouped.map(([letter, rows]) => (
             <section key={letter}>
@@ -170,7 +174,7 @@ export function BrandsIndex() {
         </div>
       ) : (
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {filtered.map((b) => (
+          {filteredBrands.map((b) => (
             <BrandCard key={b.name} brand={b} />
           ))}
         </ul>
@@ -179,7 +183,7 @@ export function BrandsIndex() {
   );
 }
 
-function BrandCard({ brand }: { brand: typeof allBrands[number] }) {
+function BrandCard({ brand }: { brand: BrandRow }) {
   return (
     <li>
       <Link
@@ -209,3 +213,7 @@ function BrandCard({ brand }: { brand: typeof allBrands[number] }) {
     </li>
   );
 }
+
+// referenced to avoid unused
+void getInitial;
+void brandInitials;

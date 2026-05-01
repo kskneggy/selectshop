@@ -14,7 +14,7 @@ export function SavedPage() {
           <h1 className="text-2xl font-semibold tracking-tight mb-1">
             保存リスト <span className="text-neutral-400 text-base font-normal">({shops.length})</span>
           </h1>
-          <p className="text-sm text-neutral-500">気になるショップをまとめておく場所。LocalStorage に保存されます。</p>
+          <p className="text-sm text-neutral-500">気になるショップをまとめておく場所。<br className="sm:hidden" />お使いの端末（ブラウザ）に保存されます。</p>
         </div>
         {shops.length > 0 && (
           <button

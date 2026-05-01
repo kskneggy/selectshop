@@ -102,6 +102,40 @@ export const brandInitials: string[] = Array.from(
   return a.localeCompare(b);
 });
 
+/**
+ * 与えられたショップ集合からブランド一覧を導出。
+ * ブランド単位の絞り込み（性別・価格帯・テイスト）に使う。
+ */
+export function brandsFromShops(shops: Shop[]): BrandRow[] {
+  const map = new Map<string, Shop[]>();
+  for (const shop of shops) {
+    for (const brand of shop.brands) {
+      if (!map.has(brand)) map.set(brand, []);
+      map.get(brand)!.push(shop);
+    }
+  }
+  return Array.from(map.entries())
+    .map(([name, shopsForBrand]) => {
+      const tagCount = new Map<string, number>();
+      for (const s of shopsForBrand) {
+        for (const t of s.audience_tags) tagCount.set(t, (tagCount.get(t) ?? 0) + 1);
+      }
+      const topAudienceTags = Array.from(tagCount.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([t]) => t);
+      return {
+        name,
+        shopCount: shopsForBrand.length,
+        shopIds: shopsForBrand.map((s) => s.id),
+        areas: Array.from(new Set(shopsForBrand.map((s) => s.area))),
+        topAudienceTags,
+        initial: getInitial(name),
+      };
+    })
+    .sort((a, b) => b.shopCount - a.shopCount || a.name.localeCompare(b.name));
+}
+
 export function getShopById(id: string): Shop | undefined {
   return allShops.find((s) => s.id === id);
 }

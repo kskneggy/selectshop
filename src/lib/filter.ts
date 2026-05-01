@@ -91,11 +91,21 @@ export function sortShops(shops: Shop[], sort: SortKey): Shop[] {
 }
 
 export const sortLabel: Record<SortKey, string> = {
-  popular: '人気順',
-  rating: '評価順',
-  brands: 'ブランド数',
+  popular: 'おすすめ順',
+  rating: '評価が高い順',
+  brands: '取扱ブランドが多い順',
   price_asc: '価格 低い順',
   price_desc: '価格 高い順',
-  alpha: '店名 ABC',
+  alpha: '店名 ABC順',
   area: 'エリア順',
+};
+
+export const sortDescription: Record<SortKey, string> = {
+  popular: 'Google評価 × 口コミ数で算出した総合スコア',
+  rating: 'Googleの星評価（高い順）',
+  brands: '取り扱いブランド数（多い順）',
+  price_asc: '価格帯（低い順）',
+  price_desc: '価格帯（高い順）',
+  alpha: '店名のアルファベット・五十音順',
+  area: 'エリア名順（同エリア内は店名順）',
 };

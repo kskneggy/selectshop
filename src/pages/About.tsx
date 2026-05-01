@@ -2,17 +2,23 @@ import { allShops, allBrands, allAreas } from '../lib/derive';
 
 export function About() {
   const shopsWithPhotos = allShops.filter((s) => (s.image_paths?.length ?? 0) > 0).length;
-  const shopsWithRating = allShops.filter((s) => s.rating !== undefined).length;
 
   return (
     <article className="max-w-2xl">
-      <h1 className="text-2xl font-semibold tracking-tight mb-4">About</h1>
+      <h1 className="text-2xl font-semibold tracking-tight mb-4">このサービスについて</h1>
 
-      <section className="space-y-4 text-sm leading-relaxed text-neutral-700 mb-8">
+      <section className="space-y-3 text-[15px] leading-relaxed text-neutral-700 mb-8">
         <p>
-          首都圏のセレクトショップを「ブランド」「エリア」「テイスト」「価格」「ジャンル」で
-          横断検索できるキュレーションサービス。プロのスタイリスト・バイヤーが
-          仕入れ・コーディネート構築の素材を見つけるためのツールとして設計されています。
+          東京（渋谷・原宿・表参道・代官山・中目黒・銀座・新宿・丸の内・六本木 ほか）の
+          <strong>セレクトショップ {allShops.length} 店</strong>を一つの画面で比べられるサービスです。
+        </p>
+        <p>
+          「<strong>このブランドを扱っているお店ってどこ？</strong>」<br />
+          「<strong>同じテイストの店、ほかにもあるかな？</strong>」<br />
+          「<strong>このエリアでメンズ向けの店を回りたい</strong>」
+        </p>
+        <p>
+          そんなときに、雑誌やSNSをひとつひとつ調べる代わりに、ここでまとめて探せます。
         </p>
       </section>
 
@@ -20,7 +26,7 @@ export function About() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
           <div>
             <div className="text-2xl font-semibold tracking-tight">{allShops.length}</div>
-            <div className="text-[11px] text-neutral-500 mt-0.5">店舗</div>
+            <div className="text-[11px] text-neutral-500 mt-0.5">お店</div>
           </div>
           <div>
             <div className="text-2xl font-semibold tracking-tight">{allBrands.length}</div>
@@ -38,57 +44,59 @@ export function About() {
       </section>
 
       <section className="mb-8">
-        <h2 className="text-base font-semibold mb-2">使い方</h2>
-        <ul className="space-y-2 text-sm text-neutral-700 list-disc list-inside">
-          <li>
-            <b>ショップ検索</b>: エリア・性別・価格帯・テイスト・ジャンルで絞り込み。並び順は「人気/評価/ブランド数/価格/ABC/エリア」から選択。AND/OR切替＋除外フィルタも対応
-          </li>
-          <li>
-            <b>マップ</b>: フィルタ条件を地図上で可視化。ピンの色で価格帯を判別、密集エリアはクラスタ化
-          </li>
-          <li>
-            <b>ブランド一覧</b>: 取扱ブランドから逆引き。「Auralee を扱う 8 店」のような横断検索が出口
-          </li>
-          <li>
-            <b>似ているショップ</b>: 各ショップの詳細ページで、取扱ブランドが近い店を Jaccard 類似度で表示
-          </li>
-          <li>
-            <b>保存リスト</b>: 気になる店を ☆ で保存（端末ローカルに保存）
-          </li>
-          <li>
-            <b>ショップ比較</b>: 2〜4店を選んで取扱ブランドの重なり/差分/全体一覧を表で比較
-          </li>
-          <li>
-            <b>CSV エクスポート</b>: 絞り込み結果を CSV でダウンロード（社内資料用）
-          </li>
+        <h2 className="text-base font-semibold mb-3">使い方</h2>
+        <div className="space-y-3 text-[14px] leading-relaxed text-neutral-700">
+          <div>
+            <div className="font-medium text-neutral-900 mb-0.5">🏬 ショップ</div>
+            <p className="text-neutral-600">エリア・性別・価格帯・テイストで条件を絞ってお店を探せます。</p>
+          </div>
+          <div>
+            <div className="font-medium text-neutral-900 mb-0.5">🗺 マップ</div>
+            <p className="text-neutral-600">地図上にお店の場所を表示。ピンの色で価格帯がひと目でわかります。</p>
+          </div>
+          <div>
+            <div className="font-medium text-neutral-900 mb-0.5">🏷 ブランド</div>
+            <p className="text-neutral-600">「Auralee はどの店で買える？」のようにブランドからお店を逆引きできます。</p>
+          </div>
+          <div>
+            <div className="font-medium text-neutral-900 mb-0.5">⭐ 保存</div>
+            <p className="text-neutral-600">気になるお店を ☆ で保存。お使いの端末（ブラウザ）にメモされます。</p>
+          </div>
+          <div>
+            <div className="font-medium text-neutral-900 mb-0.5">⚖️ 比較</div>
+            <p className="text-neutral-600">2〜4 店を選んで「両方で扱っているブランド」「片方にしかないブランド」を一覧できます。</p>
+          </div>
+          <div>
+            <div className="font-medium text-neutral-900 mb-0.5">✨ 似ているお店</div>
+            <p className="text-neutral-600">各お店のページに「品揃えが近いお店」を自動で表示。気になる店から似た系統の店をたどれます。</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="text-base font-semibold mb-2">お店の情報について</h2>
+        <ul className="space-y-1.5 text-[14px] text-neutral-700 list-disc list-inside">
+          <li>掲載しているブランドは、雑誌・公式サイト・SNS で公開されている情報を元にまとめています</li>
+          <li>店舗の写真・評価・地図情報は Google マップから取得しています</li>
+          <li>季節やシーズンによって取扱ブランドは変わります。最新情報は各お店の公式サイトもあわせてご確認ください</li>
+          <li>各お店のページに、参考にした記事・公式サイトのリンクを掲載しています</li>
         </ul>
       </section>
 
       <section className="mb-8">
-        <h2 className="text-base font-semibold mb-2">データについて</h2>
-        <ul className="space-y-2 text-sm text-neutral-700 list-disc list-inside">
-          <li>初期データは公開メディア（fashion-press, fashionmaptokyo, arkhe.tokyo, BRUTUS 等）と各店公式情報を基に構築</li>
-          <li>店舗写真・評価・所在情報は <b>Google Places API</b> から取得（{shopsWithPhotos}/{allShops.length} 店）</li>
-          <li>マップは <b>Google Maps</b>（写真クレジットは各ショップ詳細に表記）</li>
-          <li>取扱ブランドは「最近の特集記事に記載されたもの」が中心で、季節により変動します</li>
-          <li>出典 URL は各ショップ詳細ページに記載</li>
-        </ul>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-base font-semibold mb-2">ロードマップ</h2>
-        <ul className="space-y-2 text-sm text-neutral-700 list-disc list-inside">
-          <li><b>v0.2 (now)</b>: 70+店収録、写真・評価・横断検索・比較・保存・CSV対応</li>
-          <li><b>v0.3</b>: 営業時間・電話・アポ要否のメタデータ、ブランド側のメタデータ（国・本国フラッグシップ等）</li>
-          <li><b>v0.4</b>: 自動収集パイプライン（Anthropic API で公式サイト・SNS から差分検出）、新規取扱ブランドのフィード</li>
-          <li><b>v1.0</b>: スタイリスト/バイヤー向けの出張プラン作成、ブランドの取扱深度（フルライン/カプセル/限定）の表現</li>
+        <h2 className="text-base font-semibold mb-2">これからやりたいこと</h2>
+        <ul className="space-y-1.5 text-[14px] text-neutral-700 list-disc list-inside">
+          <li>営業時間・電話番号・予約が必要かどうかの表示</li>
+          <li>お店ごとに「最近、新しく入荷したブランド」をピックアップ</li>
+          <li>「1日でこのエリアの〇店を回るならこの順番」のおすすめ動線</li>
+          <li>掲載エリアの拡大（下北沢・蔵前 ほか）</li>
         </ul>
       </section>
 
       <section className="text-xs text-neutral-500 border-t border-neutral-200 pt-4">
         <p>
-          {shopsWithRating} 店の評価データ。プロのスタイリスト・バイヤー向けプロトタイプ。
-          フィードバック歓迎。
+          プロのスタイリスト・バイヤーの方を中心に、服が好きな方ならどなたでもご利用いただけます。<br />
+          気づいた点・追加してほしい店舗などあればぜひ教えてください。
         </p>
       </section>
     </article>
