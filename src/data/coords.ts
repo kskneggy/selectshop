@@ -94,4 +94,49 @@ export const shopCoords: Record<string, Coords> = {
   'tomorrowland-marunouchi': { lat: 35.6810, lng: 139.7660 },
   'land-of-tomorrow-marunouchi': { lat: 35.6810, lng: 139.7660 },
   'le-dome-marunouchi': { lat: 35.6810, lng: 139.7660 },
+
+  // 下北沢
+  'the-motel-shimokitazawa': { lat: 35.6594, lng: 139.6680 },
+  'meadow-by-flamingo-shimokitazawa': { lat: 35.6618, lng: 139.6680 },
+
+  // 吉祥寺
+  'orlo-kichijoji': { lat: 35.7048, lng: 139.5790 },
+  'rol-kichijoji': { lat: 35.7042, lng: 139.5800 },
+
+  // 三軒茶屋
+  'septis-sangenjaya': { lat: 35.6440, lng: 139.6710 },
+  'three-sangenjaya': { lat: 35.6437, lng: 139.6720 },
+  'miller-time-sangenjaya': { lat: 35.6433, lng: 139.6715 },
+
+  // 千駄ヶ谷 / 北参道
+  'conte-nu-sendagaya': { lat: 35.6810, lng: 139.7100 },
+  'dl-store-sendagaya': { lat: 35.6800, lng: 139.7080 },
+  'concept-shop-wts-sendagaya': { lat: 35.6780, lng: 139.7080 },
+  'ron-herman-sendagaya': { lat: 35.6798, lng: 139.7088 },
+
+  // 恵比寿
+  'shelter-ebisu': { lat: 35.6470, lng: 139.7080 },
+
+  // 自由が丘
+  'denim-cellar-jiyugaoka': { lat: 35.6080, lng: 139.6700 },
+
+  // 渋谷 (追加)
+  'post-overalls-shibuya': { lat: 35.6580, lng: 139.6960 },
+  'toga-shibuya-parco': { lat: 35.6614, lng: 139.6970 },
+
+  // 表参道 / 青山 / 神宮前 (追加)
+  'graphpaper-aoyama': { lat: 35.6660, lng: 139.7050 },
+  'a-presse-jingumae': { lat: 35.6745, lng: 139.7128 },
+  'visvim-fil-tokyo': { lat: 35.6680, lng: 139.7080 },
+  'maison-kitsune-aoyama': { lat: 35.6645, lng: 139.7128 },
+  'loveless-aoyama': { lat: 35.6648, lng: 139.7130 },
+  'auralee-tokyo-aoyama': { lat: 35.6585, lng: 139.7180 },
+  'n-hoolywood-aoyama': { lat: 35.6685, lng: 139.7090 },
+
+  // 原宿 (追加)
+  'wacko-maria-paradise-tokyo': { lat: 35.6760, lng: 139.7095 },
+  'neighborhood-harajuku': { lat: 35.6707, lng: 139.7068 },
+
+  // 中目黒 (追加)
+  'wmv-visvim-nakameguro': { lat: 35.6452, lng: 139.6943 },
 };
