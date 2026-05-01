@@ -12,7 +12,7 @@ import { applyFilter, emptyFilter } from '../lib/filter';
 import { FilterBar } from '../components/FilterBar';
 import { ShopImage } from '../components/ShopImage';
 
-type Sort = 'popular' | 'alpha';
+type Sort = 'popular' | 'alpha' | 'kana';
 
 function getInitial(name: string): string {
   const ch = name.trim().charAt(0).toUpperCase();
@@ -32,7 +32,10 @@ export function BrandsIndex() {
   const filteredBrands = useMemo(() => {
     const query = q.trim().toLowerCase();
     let rows = brandsForCurrent.filter((b) => {
-      if (query && !b.name.toLowerCase().includes(query)) return false;
+      if (query) {
+        const hay = [b.name, b.kana ?? ''].join(' ').toLowerCase();
+        if (!hay.includes(query)) return false;
+      }
       if (initial && b.initial !== initial) return false;
       return true;
     });
@@ -44,6 +47,14 @@ export function BrandsIndex() {
           return a.initial.localeCompare(b.initial);
         }
         return a.name.localeCompare(b.name);
+      }
+      if (sort === 'kana') {
+        const aHas = a.kana ? 0 : 1;
+        const bHas = b.kana ? 0 : 1;
+        if (aHas !== bHas) return aHas - bHas;
+        const aKey = a.kana ?? a.name;
+        const bKey = b.kana ?? b.name;
+        return aKey.localeCompare(bKey, 'ja');
       }
       return b.shopCount - a.shopCount || a.name.localeCompare(b.name);
     });
@@ -87,34 +98,32 @@ export function BrandsIndex() {
           inputMode="search"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="ブランド名で検索"
+          placeholder="ブランド名・カナで検索（例: オーラリー）"
           className="w-full px-4 py-3 text-sm border border-neutral-300 rounded-lg bg-white focus:outline-none focus:border-neutral-900"
         />
 
-        <div className="flex items-center gap-2 text-xs">
+        <div className="flex flex-wrap items-center gap-2 text-xs">
           <span className="text-neutral-500 mr-1">並び順</span>
-          <button
-            onClick={() => setSort('popular')}
-            className={clsx(
-              'px-3 py-1.5 rounded-full border min-h-[36px]',
-              sort === 'popular'
-                ? 'bg-neutral-900 text-white border-neutral-900'
-                : 'bg-white text-neutral-700 border-neutral-300'
-            )}
-          >
-            取扱店多い順
-          </button>
-          <button
-            onClick={() => setSort('alpha')}
-            className={clsx(
-              'px-3 py-1.5 rounded-full border min-h-[36px]',
-              sort === 'alpha'
-                ? 'bg-neutral-900 text-white border-neutral-900'
-                : 'bg-white text-neutral-700 border-neutral-300'
-            )}
-          >
-            A-Z
-          </button>
+          {(
+            [
+              { key: 'popular', label: '取扱店多い順' },
+              { key: 'alpha', label: 'A-Z' },
+              { key: 'kana', label: 'カナ順' },
+            ] as const
+          ).map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => setSort(key)}
+              className={clsx(
+                'px-3 py-1.5 rounded-full border min-h-[36px]',
+                sort === key
+                  ? 'bg-neutral-900 text-white border-neutral-900'
+                  : 'bg-white text-neutral-700 border-neutral-300'
+              )}
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
         {sort === 'alpha' && initialsForCurrent.length > 0 && (
@@ -191,12 +200,15 @@ function BrandCard({ brand }: { brand: BrandRow }) {
         to={`/brand/${encodeURIComponent(brand.name)}`}
         className="block px-3 py-3 border border-neutral-200 rounded-lg bg-white hover:border-neutral-900 active:bg-neutral-50"
       >
-        <div className="flex items-baseline justify-between gap-2 mb-1.5">
+        <div className="flex items-baseline justify-between gap-2 mb-0.5">
           <span className="text-[15px] font-semibold tracking-tight truncate">{brand.name}</span>
           <span className="text-xs text-neutral-500 font-mono shrink-0">
             {brand.shopCount} 店
           </span>
         </div>
+        {brand.kana && (
+          <div className="text-[11px] text-neutral-400 mb-1.5 truncate">{brand.kana}</div>
+        )}
         {brand.previewImages.length > 0 && (
           <div className="grid grid-cols-3 gap-1 mb-2">
             {[0, 1, 2].map((i) => {

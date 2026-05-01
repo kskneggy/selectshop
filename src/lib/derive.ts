@@ -1,7 +1,12 @@
 import { shops } from '../data/shops';
 import { shopCoords } from '../data/coords';
 import { shopPhotos } from '../data/photos';
+import { brandKana } from '../data/brandKana';
 import type { Shop } from '../types';
+
+export function getBrandKana(name: string): string | undefined {
+  return brandKana[name];
+}
 
 /**
  * ブランド名の表記揺れを正規化。同じブランドが別表記で分断されないように。
@@ -52,6 +57,7 @@ export const areaCount: Record<string, number> = (() => {
 
 export type BrandRow = {
   name: string;
+  kana?: string;
   shopCount: number;
   shopIds: string[];
   areas: string[];
@@ -91,6 +97,7 @@ export const allBrands: BrandRow[] = Array.from(brandShops.entries())
       .map((s) => s.image_paths![0]);
     return {
       name,
+      kana: brandKana[name],
       shopCount: shopsForBrand.length,
       shopIds: shopsForBrand.map((s) => s.id),
       areas: Array.from(new Set(shopsForBrand.map((s) => s.area))),
@@ -138,6 +145,7 @@ export function brandsFromShops(shops: Shop[]): BrandRow[] {
         .map((s) => s.image_paths![0]);
       return {
         name,
+        kana: brandKana[name],
         shopCount: shopsForBrand.length,
         shopIds: shopsForBrand.map((s) => s.id),
         areas: Array.from(new Set(shopsForBrand.map((s) => s.area))),

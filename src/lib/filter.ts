@@ -1,6 +1,7 @@
 import type { Shop, Gender, PriceRange, AudienceTag, Genre } from '../types';
+import { brandKana } from '../data/brandKana';
 
-export type SortKey = 'popular' | 'rating' | 'brands' | 'price_asc' | 'price_desc' | 'alpha' | 'area';
+export type SortKey = 'popular' | 'rating' | 'brands' | 'price_asc' | 'price_desc' | 'alpha' | 'kana' | 'area';
 
 export type FilterState = {
   query: string;
@@ -36,7 +37,11 @@ export function applyFilter(shops: Shop[], f: FilterState): Shop[] {
     if (f.genres.length && !f.genres.some((g) => s.genres.includes(g))) return false;
     if (f.brand && !s.brands.includes(f.brand)) return false;
     if (q) {
-      const hay = [s.name, s.name_en ?? '', s.area, s.description, ...s.brands].join(' ').toLowerCase();
+      const brandTokens = s.brands.flatMap((b) => {
+        const kana = brandKana[b];
+        return kana ? [b, kana] : [b];
+      });
+      const hay = [s.name, s.name_en ?? '', s.area, s.description, ...brandTokens].join(' ').toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
@@ -60,7 +65,15 @@ export function sortShops(shops: Shop[], sort: SortKey): Shop[] {
       sorted.sort((a, b) => priceOrder[b.price_range] - priceOrder[a.price_range]);
       break;
     case 'alpha':
-      sorted.sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+      sorted.sort((a, b) => a.name.localeCompare(b.name, 'en'));
+      break;
+    case 'kana':
+      sorted.sort((a, b) => {
+        const aJa = /^[ぁ-んァ-ヶ一-龥]/.test(a.name) ? 0 : 1;
+        const bJa = /^[ぁ-んァ-ヶ一-龥]/.test(b.name) ? 0 : 1;
+        if (aJa !== bJa) return aJa - bJa;
+        return a.name.localeCompare(b.name, 'ja');
+      });
       break;
     case 'area':
       sorted.sort((a, b) => a.area.localeCompare(b.area, 'ja') || a.name.localeCompare(b.name, 'ja'));
@@ -83,6 +96,7 @@ export const sortLabel: Record<SortKey, string> = {
   price_asc: '価格 低い順',
   price_desc: '価格 高い順',
   alpha: '店名 ABC順',
+  kana: '店名 五十音順',
   area: 'エリア順',
 };
 
@@ -92,6 +106,7 @@ export const sortDescription: Record<SortKey, string> = {
   brands: '取り扱いブランド数（多い順）',
   price_asc: '価格帯（低い順）',
   price_desc: '価格帯（高い順）',
-  alpha: '店名のアルファベット・五十音順',
+  alpha: '店名のアルファベット順（A→Z）',
+  kana: '日本語の店名から順に（あ→ん）',
   area: 'エリア名順（同エリア内は店名順）',
 };

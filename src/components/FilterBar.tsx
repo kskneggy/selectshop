@@ -16,7 +16,7 @@ import { clsx } from 'clsx';
 
 const genders: Gender[] = ['mens', 'womens', 'unisex'];
 const prices: PriceRange[] = ['low', 'mid', 'high', 'luxury'];
-const sortKeys: FilterState['sort'][] = ['popular', 'rating', 'brands', 'price_asc', 'price_desc', 'alpha', 'area'];
+const sortKeys: FilterState['sort'][] = ['popular', 'rating', 'brands', 'price_asc', 'price_desc', 'alpha', 'kana', 'area'];
 
 type Props = {
   filter: FilterState;
