@@ -10,6 +10,7 @@ import {
 } from '../lib/derive';
 import { applyFilter, emptyFilter } from '../lib/filter';
 import { FilterBar } from '../components/FilterBar';
+import { ShopImage } from '../components/ShopImage';
 
 type Sort = 'popular' | 'alpha';
 
@@ -188,14 +189,31 @@ function BrandCard({ brand }: { brand: BrandRow }) {
     <li>
       <Link
         to={`/brand/${encodeURIComponent(brand.name)}`}
-        className="block px-4 py-3 border border-neutral-200 rounded-lg bg-white hover:border-neutral-900 active:bg-neutral-50"
+        className="block px-3 py-3 border border-neutral-200 rounded-lg bg-white hover:border-neutral-900 active:bg-neutral-50"
       >
-        <div className="flex items-baseline justify-between gap-2 mb-1">
-          <span className="text-base font-medium truncate">{brand.name}</span>
+        <div className="flex items-baseline justify-between gap-2 mb-1.5">
+          <span className="text-[15px] font-semibold tracking-tight truncate">{brand.name}</span>
           <span className="text-xs text-neutral-500 font-mono shrink-0">
             {brand.shopCount} 店
           </span>
         </div>
+        {brand.previewImages.length > 0 && (
+          <div className="grid grid-cols-3 gap-1 mb-2">
+            {[0, 1, 2].map((i) => {
+              const src = brand.previewImages[i];
+              return (
+                <div
+                  key={i}
+                  className="aspect-square overflow-hidden rounded bg-neutral-100"
+                >
+                  {src ? (
+                    <ShopImage src={src} alt={`${brand.name} 取扱店`} className="w-full h-full" />
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+        )}
         <div className="text-[11px] text-neutral-500 truncate">
           {brand.areas.slice(0, 4).join(' · ')}
           {brand.areas.length > 4 && ` +${brand.areas.length - 4}`}

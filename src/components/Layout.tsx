@@ -6,8 +6,8 @@ import { useCompareShops } from './CompareList';
 
 const navItems = [
   { to: '/', label: 'ショップ', Icon: Store, end: true },
-  { to: '/map', label: 'マップ', Icon: MapIcon },
   { to: '/brands', label: 'ブランド', Icon: Tag },
+  { to: '/map', label: 'マップ', Icon: MapIcon },
   { to: '/saved', label: '保存', Icon: Bookmark },
   { to: '/compare', label: '比較', Icon: Scale },
 ];

@@ -57,6 +57,7 @@ export type BrandRow = {
   areas: string[];
   topAudienceTags: string[];
   initial: string;
+  previewImages: string[];
 };
 
 function getInitial(name: string): string {
@@ -83,6 +84,11 @@ export const allBrands: BrandRow[] = Array.from(brandShops.entries())
       .sort((a, b) => b[1] - a[1])
       .slice(0, 3)
       .map(([t]) => t);
+    const previewImages = shopsForBrand
+      .filter((s) => (s.image_paths?.length ?? 0) > 0)
+      .sort((a, b) => (b.user_rating_count ?? 0) - (a.user_rating_count ?? 0))
+      .slice(0, 3)
+      .map((s) => s.image_paths![0]);
     return {
       name,
       shopCount: shopsForBrand.length,
@@ -90,6 +96,7 @@ export const allBrands: BrandRow[] = Array.from(brandShops.entries())
       areas: Array.from(new Set(shopsForBrand.map((s) => s.area))),
       topAudienceTags,
       initial: getInitial(name),
+      previewImages,
     };
   })
   .sort((a, b) => b.shopCount - a.shopCount || a.name.localeCompare(b.name));
@@ -124,6 +131,11 @@ export function brandsFromShops(shops: Shop[]): BrandRow[] {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 3)
         .map(([t]) => t);
+      const previewImages = shopsForBrand
+        .filter((s) => (s.image_paths?.length ?? 0) > 0)
+        .sort((a, b) => (b.user_rating_count ?? 0) - (a.user_rating_count ?? 0))
+        .slice(0, 3)
+        .map((s) => s.image_paths![0]);
       return {
         name,
         shopCount: shopsForBrand.length,
@@ -131,6 +143,7 @@ export function brandsFromShops(shops: Shop[]): BrandRow[] {
         areas: Array.from(new Set(shopsForBrand.map((s) => s.area))),
         topAudienceTags,
         initial: getInitial(name),
+        previewImages,
       };
     })
     .sort((a, b) => b.shopCount - a.shopCount || a.name.localeCompare(b.name));
