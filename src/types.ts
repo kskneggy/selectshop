@@ -48,6 +48,13 @@ export type Shop = {
   website?: string;
   instagram?: string;
   source_urls?: string[];
+  // Derived from src/data/photos.ts (Google Places API)
+  image_paths?: string[];
+  place_id?: string;
+  google_maps_uri?: string;
+  rating?: number;
+  user_rating_count?: number;
+  photo_attributions?: string[];
 };
 
 export type BrandIndex = {

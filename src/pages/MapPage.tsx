@@ -5,6 +5,7 @@ import { APIProvider, Map, Marker, InfoWindow } from '@vis.gl/react-google-maps'
 import { allShops, audienceTagLabel, genderLabel, priceLabel } from '../lib/derive';
 import { applyFilter, emptyFilter } from '../lib/filter';
 import { FilterBar } from '../components/FilterBar';
+import { ShopImage } from '../components/ShopImage';
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
 const TOKYO_CENTER = { lat: 35.6605, lng: 139.7088 };
@@ -52,9 +53,26 @@ export function MapPage() {
                   onCloseClick={() => setOpenId(null)}
                   pixelOffset={[0, -36]}
                 >
-                  <div className="min-w-[220px]">
-                    <div className="text-[11px] text-neutral-500 mb-0.5">{openShop.area}</div>
-                    <div className="font-semibold text-base mb-1.5">{openShop.name}</div>
+                  <div className="min-w-[240px] max-w-[260px]">
+                    {openShop.image_paths?.[0] && (
+                      <div className="-mx-3 -mt-2 mb-2 overflow-hidden">
+                        <ShopImage
+                          src={openShop.image_paths[0]}
+                          alt={openShop.name}
+                          className="w-full aspect-[16/9]"
+                        />
+                      </div>
+                    )}
+                    <div className="text-[11px] text-neutral-500 mb-0.5 flex items-center gap-2">
+                      <span>{openShop.area}</span>
+                      {openShop.rating !== undefined && (
+                        <span>
+                          <span className="text-amber-500">★</span>
+                          {openShop.rating.toFixed(1)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="font-semibold text-base mb-1.5 leading-tight">{openShop.name}</div>
                     <div className="text-[11px] text-neutral-600 mb-2">
                       {genderLabel[openShop.target_gender]} ·{' '}
                       <span className="font-mono">{priceLabel[openShop.price_range]}</span> ·{' '}

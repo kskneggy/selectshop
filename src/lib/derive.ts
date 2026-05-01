@@ -1,11 +1,23 @@
 import { shops } from '../data/shops';
 import { shopCoords } from '../data/coords';
+import { shopPhotos } from '../data/photos';
 import type { Shop } from '../types';
 
-export const allShops: Shop[] = shops.map((s) => ({
-  ...s,
-  coords: shopCoords[s.id] ?? s.coords,
-}));
+export const allShops: Shop[] = shops.map((s) => {
+  const ph = shopPhotos[s.id];
+  return {
+    ...s,
+    coords: shopCoords[s.id] ?? s.coords,
+    image_paths: ph?.image_paths ?? [],
+    place_id: ph?.place_id,
+    google_maps_uri: ph?.google_maps_uri,
+    rating: ph?.rating,
+    user_rating_count: ph?.user_rating_count,
+    photo_attributions: ph?.attributions ?? [],
+  };
+});
+
+export const BASE_URL: string = (import.meta as { env: { BASE_URL: string } }).env.BASE_URL;
 
 export const allAreas: string[] = Array.from(
   new Set(allShops.map((s) => s.area))
