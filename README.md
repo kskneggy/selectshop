@@ -17,6 +17,21 @@ pnpm dev      # http://localhost:5173/selectshop/
 pnpm build    # dist/ に生成
 ```
 
+### Google Maps API キー設定
+
+マップページは Google Maps を使用。APIキーが必要。
+
+**ローカル開発**: プロジェクトルートに `.env.local` を作成
+```
+VITE_GOOGLE_MAPS_API_KEY=AIza...
+```
+
+**本番（GitHub Pages）**: GitHub の repo Settings → Secrets and variables → Actions に
+`VITE_GOOGLE_MAPS_API_KEY` として登録（値はキー文字列）。
+
+キー未設定でもアプリは動作する（マップページのみ案内表示に切り替わる）。
+取得手順は[`.env.example`](./.env.example) を参照。
+
 ## ディレクトリ
 
 ```
