@@ -26,21 +26,23 @@ export function MapPage() {
           条件を絞り込んで地図で位置関係を把握。ピンをタップで詳細へ。
         </p>
       </div>
-      <FilterBar filter={filter} setFilter={setFilter} resultCount={withCoords.length} />
+      <FilterBar filter={filter} setFilter={setFilter} resultCount={withCoords.length} showSort={false} />
 
       {!apiKey ? (
         <NoKeyState />
       ) : (
-        <div className="border border-neutral-200 rounded-lg overflow-hidden">
-          <APIProvider apiKey={apiKey}>
-            <Map
-              defaultCenter={TOKYO_CENTER}
-              defaultZoom={13}
-              gestureHandling="greedy"
-              disableDefaultUI={false}
-              style={{ height: '70vh', width: '100%' }}
-            >
-              <ClusteredMarkers shops={withCoords} onClick={setOpenId} />
+        <>
+          <PriceLegend />
+          <div className="border border-neutral-200 rounded-lg overflow-hidden">
+            <APIProvider apiKey={apiKey}>
+              <Map
+                defaultCenter={TOKYO_CENTER}
+                defaultZoom={13}
+                gestureHandling="greedy"
+                disableDefaultUI={false}
+                style={{ height: '70vh', width: '100%' }}
+              >
+                <ClusteredMarkers shops={withCoords} onClick={setOpenId} />
               {openShop && (
                 <InfoWindow
                   position={openShop.coords!}
@@ -94,12 +96,12 @@ export function MapPage() {
                   </div>
                 </InfoWindow>
               )}
-            </Map>
-          </APIProvider>
-        </div>
+              </Map>
+            </APIProvider>
+          </div>
+        </>
       )}
 
-      <PriceLegend />
       {withCoords.length < filtered.length && (
         <p className="text-xs text-neutral-400 mt-2">
           ※ {filtered.length - withCoords.length} 店は座標未登録のため地図に表示されません

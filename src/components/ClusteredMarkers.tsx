@@ -35,19 +35,51 @@ export function ClusteredMarkers({ shops, onClick }: Props) {
   );
 }
 
+const priceLabel: Record<PriceRange, string> = {
+  low: '〜¥1万',
+  mid: '¥1〜3万',
+  high: '¥3〜10万',
+  luxury: '¥10万〜',
+};
+
+const priceLongLabel: Record<PriceRange, string> = {
+  low: 'カジュアル',
+  mid: 'ミドル',
+  high: 'ハイ',
+  luxury: 'ラグジュアリー',
+};
+
 export function PriceLegend() {
   return (
-    <div className="flex flex-wrap items-center gap-3 text-[11px] text-neutral-600 mt-2">
-      <span className="text-neutral-500">価格帯:</span>
-      {(['low', 'mid', 'high', 'luxury'] as PriceRange[]).map((p) => (
-        <span key={p} className="inline-flex items-center gap-1">
-          <span
-            className="inline-block w-3 h-3 rounded-full border border-white shadow"
-            style={{ backgroundColor: priceColor[p] }}
-          />
-          {p === 'low' ? '〜¥1万' : p === 'mid' ? '¥1〜3万' : p === 'high' ? '¥3〜10万' : '¥10万〜'}
-        </span>
-      ))}
+    <div className="bg-white border border-neutral-200 rounded-lg p-3 mb-2">
+      <div className="text-[11px] text-neutral-500 mb-2 uppercase tracking-wide">
+        ピンの色 = 価格帯（代表的なシャツ・ブラウスの中央値）
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        {(['low', 'mid', 'high', 'luxury'] as PriceRange[]).map((p) => (
+          <div key={p} className="flex items-center gap-2">
+            <svg
+              width="20"
+              height="28"
+              viewBox="0 0 32 44"
+              className="shrink-0"
+              aria-hidden="true"
+            >
+              <path
+                d="M16 0C7.16 0 0 7.16 0 16c0 12 16 28 16 28s16-16 16-28C32 7.16 24.84 0 16 0z"
+                fill={priceColor[p]}
+                stroke="white"
+                strokeWidth="2"
+              />
+              <circle cx="16" cy="16" r="6" fill="white" />
+            </svg>
+            <div className="leading-tight">
+              <div className="text-xs font-medium">{priceLongLabel[p]}</div>
+              <div className="text-[10px] text-neutral-500 font-mono">{priceLabel[p]}</div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
