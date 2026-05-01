@@ -27,13 +27,11 @@ type Props = {
 
 function Chip({
   active,
-  excluded,
   children,
   onClick,
   badge,
 }: {
   active: boolean;
-  excluded?: boolean;
   children: React.ReactNode;
   onClick: () => void;
   badge?: number;
@@ -44,16 +42,14 @@ function Chip({
       onClick={onClick}
       className={clsx(
         'px-3 py-1.5 text-xs rounded-full border transition-colors min-h-[36px] inline-flex items-center gap-1',
-        excluded
-          ? 'bg-red-50 text-red-700 border-red-300 line-through'
-          : active
+        active
           ? 'bg-neutral-900 text-white border-neutral-900'
           : 'bg-white text-neutral-700 border-neutral-300 active:bg-neutral-50'
       )}
     >
       {children}
       {badge !== undefined && (
-        <span className={clsx('text-[10px] font-mono', active || excluded ? 'opacity-75' : 'text-neutral-400')}>
+        <span className={clsx('text-[10px] font-mono', active ? 'opacity-75' : 'text-neutral-400')}>
           {badge}
         </span>
       )}
@@ -67,14 +63,13 @@ function toggle<T>(arr: T[], v: T): T[] {
 
 export function FilterBar({ filter, setFilter, resultCount, showSort = true }: Props) {
   const [open, setOpen] = useState(false);
-  const advancedActive = filter.audiences.length + filter.excludeAudiences.length + filter.genres.length;
+  const advancedActive = filter.audiences.length + filter.genres.length;
   const anyActive =
     !!filter.brand ||
     filter.areas.length +
       filter.genders.length +
       filter.prices.length +
       filter.audiences.length +
-      filter.excludeAudiences.length +
       filter.genres.length +
       (filter.query ? 1 : 0) >
       0;
@@ -145,67 +140,20 @@ export function FilterBar({ filter, setFilter, resultCount, showSort = true }: P
           onClick={() => setOpen((v) => !v)}
           className="text-xs text-neutral-600 underline underline-offset-2 hover:text-neutral-900 min-h-[36px]"
         >
-          {open ? '詳細を閉じる' : `詳細（テイスト・ジャンル・除外）${advancedActive ? ` · ${advancedActive}` : ''}`}
+          {open ? '詳細を閉じる' : `詳細（テイスト・ジャンル）${advancedActive ? ` · ${advancedActive}` : ''}`}
         </button>
       </div>
 
       {open && (
         <div className="space-y-3 pt-1">
           <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <div className="text-[11px] text-neutral-500 uppercase tracking-wide">テイスト（含む）</div>
-              <div className="flex items-center gap-1 text-[11px] text-neutral-500">
-                <span>条件:</span>
-                <button
-                  type="button"
-                  onClick={() => setFilter({ ...filter, audiencesMode: filter.audiencesMode === 'or' ? 'and' : 'or' })}
-                  className="px-2 py-0.5 rounded border border-neutral-300 font-mono text-xs bg-white"
-                >
-                  {filter.audiencesMode === 'or' ? 'OR (いずれか)' : 'AND (すべて満たす)'}
-                </button>
-              </div>
-            </div>
+            <div className="text-[11px] text-neutral-500 mb-1.5 uppercase tracking-wide">テイスト</div>
             <div className="flex flex-wrap gap-1.5">
               {allAudienceTags.map((t) => (
                 <Chip
                   key={t}
                   active={filter.audiences.includes(t)}
-                  onClick={() => {
-                    const tag = t as AudienceTag;
-                    const next = { ...filter };
-                    if (filter.audiences.includes(tag)) {
-                      next.audiences = filter.audiences.filter((x) => x !== tag);
-                    } else {
-                      next.audiences = [...filter.audiences, tag];
-                      next.excludeAudiences = filter.excludeAudiences.filter((x) => x !== tag);
-                    }
-                    setFilter(next);
-                  }}
-                >
-                  {audienceTagLabel[t]}
-                </Chip>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div className="text-[11px] text-neutral-500 mb-1.5 uppercase tracking-wide">テイスト（除外）</div>
-            <div className="flex flex-wrap gap-1.5">
-              {allAudienceTags.map((t) => (
-                <Chip
-                  key={t}
-                  active={false}
-                  excluded={filter.excludeAudiences.includes(t)}
-                  onClick={() => {
-                    const tag = t as AudienceTag;
-                    const next = { ...filter };
-                    if (filter.excludeAudiences.includes(tag)) {
-                      next.excludeAudiences = filter.excludeAudiences.filter((x) => x !== tag);
-                    } else {
-                      next.excludeAudiences = [...filter.excludeAudiences, tag];
-                      next.audiences = filter.audiences.filter((x) => x !== tag);
-                    }
-                    setFilter(next);
-                  }}
+                  onClick={() => setFilter({ ...filter, audiences: toggle(filter.audiences, t as AudienceTag) })}
                 >
                   {audienceTagLabel[t]}
                 </Chip>
@@ -284,8 +232,6 @@ const emptyFilterDefault: FilterState = {
   genders: [],
   prices: [],
   audiences: [],
-  audiencesMode: 'or',
-  excludeAudiences: [],
   genres: [],
   brand: null,
   sort: 'popular',

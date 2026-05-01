@@ -1,7 +1,6 @@
 import type { Shop, Gender, PriceRange, AudienceTag, Genre } from '../types';
 
 export type SortKey = 'popular' | 'rating' | 'brands' | 'price_asc' | 'price_desc' | 'alpha' | 'area';
-export type TagMode = 'or' | 'and';
 
 export type FilterState = {
   query: string;
@@ -9,8 +8,6 @@ export type FilterState = {
   genders: Gender[];
   prices: PriceRange[];
   audiences: AudienceTag[];
-  audiencesMode: TagMode;
-  excludeAudiences: AudienceTag[];
   genres: Genre[];
   brand: string | null;
   sort: SortKey;
@@ -22,8 +19,6 @@ export const emptyFilter: FilterState = {
   genders: [],
   prices: [],
   audiences: [],
-  audiencesMode: 'or',
-  excludeAudiences: [],
   genres: [],
   brand: null,
   sort: 'popular',
@@ -37,16 +32,7 @@ export function applyFilter(shops: Shop[], f: FilterState): Shop[] {
     if (f.areas.length && !f.areas.includes(s.area)) return false;
     if (f.genders.length && !f.genders.includes(s.target_gender)) return false;
     if (f.prices.length && !f.prices.includes(s.price_range)) return false;
-    if (f.audiences.length) {
-      if (f.audiencesMode === 'and') {
-        if (!f.audiences.every((t) => s.audience_tags.includes(t))) return false;
-      } else {
-        if (!f.audiences.some((t) => s.audience_tags.includes(t))) return false;
-      }
-    }
-    if (f.excludeAudiences.length) {
-      if (f.excludeAudiences.some((t) => s.audience_tags.includes(t))) return false;
-    }
+    if (f.audiences.length && !f.audiences.some((t) => s.audience_tags.includes(t))) return false;
     if (f.genres.length && !f.genres.some((g) => s.genres.includes(g))) return false;
     if (f.brand && !s.brands.includes(f.brand)) return false;
     if (q) {
