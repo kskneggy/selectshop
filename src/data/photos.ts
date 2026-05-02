@@ -1091,5 +1091,373 @@ export const shopPhotos: Record<string, ShopPhotos> = {
       "清水（及川）まゆみ",
       "s t"
     ]
+  },
+  "the-motel-shimokitazawa": {
+    "place_id": "ChIJ1ciptGbzGGARUW3OQHWhSE0",
+    "google_maps_uri": "https://maps.google.com/?cid=5568878464214134097&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "image_paths": [
+      "images/shops/the-motel-shimokitazawa/1.jpg",
+      "images/shops/the-motel-shimokitazawa/2.jpg",
+      "images/shops/the-motel-shimokitazawa/3.jpg"
+    ],
+    "attributions": [
+      "Sam"
+    ]
+  },
+  "meadow-by-flamingo-shimokitazawa": {
+    "place_id": "ChIJvcw6cGvzGGARy3JZPNNZ_wQ",
+    "google_maps_uri": "https://maps.google.com/?cid=360105258998395595&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.3,
+    "user_rating_count": 22,
+    "image_paths": [
+      "images/shops/meadow-by-flamingo-shimokitazawa/1.jpg",
+      "images/shops/meadow-by-flamingo-shimokitazawa/2.jpg",
+      "images/shops/meadow-by-flamingo-shimokitazawa/3.jpg"
+    ],
+    "attributions": [
+      "Feng Liao",
+      "三浦綾子",
+      "Douglas Chan-Wing"
+    ]
+  },
+  "orlo-kichijoji": {
+    "place_id": "ChIJeT7U1kzuGGARbcCdAMmCqt8",
+    "google_maps_uri": "https://maps.google.com/?cid=16116838016309117037&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.7,
+    "user_rating_count": 7,
+    "image_paths": [
+      "images/shops/orlo-kichijoji/1.jpg",
+      "images/shops/orlo-kichijoji/2.jpg",
+      "images/shops/orlo-kichijoji/3.jpg"
+    ],
+    "attributions": [
+      "さへきひろのぶ",
+      "orlo"
+    ]
+  },
+  "rol-kichijoji": {
+    "place_id": "ChIJben-ZEfuGGARaz4VSI5GvUA",
+    "google_maps_uri": "https://maps.google.com/?cid=4664962365934354027&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.7,
+    "user_rating_count": 39,
+    "image_paths": [
+      "images/shops/rol-kichijoji/1.jpg",
+      "images/shops/rol-kichijoji/2.jpg",
+      "images/shops/rol-kichijoji/3.jpg"
+    ],
+    "attributions": [
+      "ROL"
+    ]
+  },
+  "septis-sangenjaya": {
+    "place_id": "ChIJFS70KKL0GGARvL1j4Qos61M",
+    "google_maps_uri": "https://maps.google.com/?cid=6046975349917728188&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.9,
+    "user_rating_count": 38,
+    "image_paths": [
+      "images/shops/septis-sangenjaya/1.jpg",
+      "images/shops/septis-sangenjaya/2.jpg",
+      "images/shops/septis-sangenjaya/3.jpg"
+    ],
+    "attributions": [
+      "セプティズ",
+      "yuji ogasawara",
+      "TOMOHIRO KONDO"
+    ]
+  },
+  "three-sangenjaya": {
+    "place_id": "ChIJh2FMPaP0GGARiaX996LuiOg",
+    "google_maps_uri": "https://maps.google.com/?cid=16755904797344638345&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.2,
+    "user_rating_count": 40,
+    "image_paths": [
+      "images/shops/three-sangenjaya/1.jpg",
+      "images/shops/three-sangenjaya/2.jpg",
+      "images/shops/three-sangenjaya/3.jpg"
+    ],
+    "attributions": [
+      "32GBのSDカード",
+      "きょうかのばあば"
+    ]
+  },
+  "miller-time-sangenjaya": {
+    "place_id": "ChIJyQsqU2DzGGARYXj0MLqu50Q",
+    "google_maps_uri": "https://maps.google.com/?cid=4965129228907739233&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.3,
+    "user_rating_count": 23,
+    "image_paths": [
+      "images/shops/miller-time-sangenjaya/1.jpg",
+      "images/shops/miller-time-sangenjaya/2.jpg",
+      "images/shops/miller-time-sangenjaya/3.jpg"
+    ],
+    "attributions": [
+      "Cafe&Bar Time"
+    ]
+  },
+  "conte-nu-sendagaya": {
+    "place_id": "ChIJqwvGqi-NGGAR22pdaQtjgmo",
+    "google_maps_uri": "https://maps.google.com/?cid=7674805615656266459&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.9,
+    "user_rating_count": 7,
+    "image_paths": [
+      "images/shops/conte-nu-sendagaya/1.jpg",
+      "images/shops/conte-nu-sendagaya/2.jpg",
+      "images/shops/conte-nu-sendagaya/3.jpg"
+    ],
+    "attributions": [
+      "Mayuko Okada",
+      "YOPi東京グルメ"
+    ]
+  },
+  "dl-store-sendagaya": {
+    "place_id": "ChIJK0-09buMGGARuxCHvMne-38",
+    "google_maps_uri": "https://maps.google.com/?cid=9222209620003983547&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.6,
+    "user_rating_count": 222,
+    "image_paths": [
+      "images/shops/dl-store-sendagaya/1.jpg",
+      "images/shops/dl-store-sendagaya/2.jpg",
+      "images/shops/dl-store-sendagaya/3.jpg"
+    ],
+    "attributions": [
+      "ループウィラー 千駄ヶ谷",
+      "MrSense-쎈스씨",
+      "이상호"
+    ]
+  },
+  "concept-shop-wts-sendagaya": {
+    "place_id": "ChIJkxJXReSNGGARIKHEAmAKSBM",
+    "google_maps_uri": "https://maps.google.com/?cid=1389371892523376928&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 5,
+    "user_rating_count": 4,
+    "image_paths": [
+      "images/shops/concept-shop-wts-sendagaya/1.jpg",
+      "images/shops/concept-shop-wts-sendagaya/2.jpg",
+      "images/shops/concept-shop-wts-sendagaya/3.jpg"
+    ],
+    "attributions": [
+      "Concept Shop WTS"
+    ]
+  },
+  "ron-herman-sendagaya": {
+    "place_id": "ChIJAQBAor2MGGARhEiOZsBBKnM",
+    "google_maps_uri": "https://maps.google.com/?cid=8298517557993687172&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.2,
+    "user_rating_count": 986,
+    "image_paths": [
+      "images/shops/ron-herman-sendagaya/1.jpg",
+      "images/shops/ron-herman-sendagaya/2.jpg",
+      "images/shops/ron-herman-sendagaya/3.jpg"
+    ],
+    "attributions": [
+      "ロンハーマン カフェ千駄ヶ谷店",
+      "Akira Morita"
+    ]
+  },
+  "shelter-ebisu": {
+    "place_id": "ChIJWZzf20OLGGARZQfSsPKcyiM",
+    "google_maps_uri": "https://maps.google.com/?cid=2579046302785603429&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.3,
+    "user_rating_count": 14,
+    "image_paths": [
+      "images/shops/shelter-ebisu/1.jpg",
+      "images/shops/shelter-ebisu/2.jpg",
+      "images/shops/shelter-ebisu/3.jpg"
+    ],
+    "attributions": [
+      "tkyk mk",
+      "SHELTER",
+      "TOKYO SHELTER (SHELTER-TOKYO)"
+    ]
+  },
+  "denim-cellar-jiyugaoka": {
+    "place_id": "ChIJd7-DEh71GGAR8RJbcK3S7mA",
+    "google_maps_uri": "https://maps.google.com/?cid=6984751714454409969&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.6,
+    "user_rating_count": 26,
+    "image_paths": [
+      "images/shops/denim-cellar-jiyugaoka/1.jpg",
+      "images/shops/denim-cellar-jiyugaoka/2.jpg",
+      "images/shops/denim-cellar-jiyugaoka/3.jpg"
+    ],
+    "attributions": [
+      "Denim Cellar."
+    ]
+  },
+  "post-overalls-shibuya": {
+    "place_id": "ChIJEYPAnzuNGGARGcj8hpXvVus",
+    "google_maps_uri": "https://maps.google.com/?cid=16958004872404060185&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "image_paths": [
+      "images/shops/post-overalls-shibuya/1.jpg",
+      "images/shops/post-overalls-shibuya/2.jpg",
+      "images/shops/post-overalls-shibuya/3.jpg"
+    ],
+    "attributions": [
+      "Post O'Alls SHIBUYA"
+    ]
+  },
+  "toga-shibuya-parco": {
+    "place_id": "ChIJ_-jh4qiMGGARWA-K6Cm0wGE",
+    "google_maps_uri": "https://maps.google.com/?cid=7043827909295476568&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 1.8,
+    "user_rating_count": 14,
+    "image_paths": [],
+    "attributions": []
+  },
+  "graphpaper-aoyama": {
+    "place_id": "ChIJCwoF2qaMGGAR26bO-fNsd1E",
+    "google_maps_uri": "https://maps.google.com/?cid=5870280434424653531&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.1,
+    "user_rating_count": 119,
+    "image_paths": [
+      "images/shops/graphpaper-aoyama/1.jpg",
+      "images/shops/graphpaper-aoyama/2.jpg",
+      "images/shops/graphpaper-aoyama/3.jpg"
+    ],
+    "attributions": [
+      "wade goh",
+      "Cyril Saulnier (C-reel)",
+      "徐仁謙"
+    ]
+  },
+  "a-presse-jingumae": {
+    "place_id": "ChIJkVoOfgCNGGAR_K07U9ey4es",
+    "google_maps_uri": "https://maps.google.com/?cid=16997063106557095420&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.8,
+    "user_rating_count": 30,
+    "image_paths": [
+      "images/shops/a-presse-jingumae/1.jpg",
+      "images/shops/a-presse-jingumae/2.jpg",
+      "images/shops/a-presse-jingumae/3.jpg"
+    ],
+    "attributions": [
+      "정성코",
+      "Younghoon Kim",
+      "Fuji"
+    ]
+  },
+  "visvim-fil-tokyo": {
+    "place_id": "ChIJP7d7-qOMGGARvT1uhzZ8-7M",
+    "google_maps_uri": "https://maps.google.com/?cid=12969096125585702333&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.4,
+    "user_rating_count": 56,
+    "image_paths": [
+      "images/shops/visvim-fil-tokyo/1.jpg",
+      "images/shops/visvim-fil-tokyo/2.jpg",
+      "images/shops/visvim-fil-tokyo/3.jpg"
+    ],
+    "attributions": [
+      "P T",
+      "Adam Shoshani"
+    ]
+  },
+  "maison-kitsune-aoyama": {
+    "place_id": "ChIJVVUhxGGLGGAROggwTzlLX4w",
+    "google_maps_uri": "https://maps.google.com/?cid=10114885997611190330&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.8,
+    "user_rating_count": 171,
+    "image_paths": [
+      "images/shops/maison-kitsune-aoyama/1.jpg",
+      "images/shops/maison-kitsune-aoyama/2.jpg",
+      "images/shops/maison-kitsune-aoyama/3.jpg"
+    ],
+    "attributions": [
+      "Maison Kitsuné Aoyama",
+      "Nhi Le",
+      "egg phuket"
+    ]
+  },
+  "loveless-aoyama": {
+    "place_id": "ChIJ8UbYMmCLGGARxdEQij28r5s",
+    "google_maps_uri": "https://maps.google.com/?cid=11218392169298579909&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.9,
+    "user_rating_count": 788,
+    "image_paths": [
+      "images/shops/loveless-aoyama/1.jpg",
+      "images/shops/loveless-aoyama/2.jpg",
+      "images/shops/loveless-aoyama/3.jpg"
+    ],
+    "attributions": [
+      "LOVELESS AOYAMA",
+      "Sylvia Kung"
+    ]
+  },
+  "auralee-tokyo-aoyama": {
+    "place_id": "ChIJJQ9cqWaLGGARsbQzwwUDAnU",
+    "google_maps_uri": "https://maps.google.com/?cid=8431304775675655345&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4,
+    "user_rating_count": 171,
+    "image_paths": [
+      "images/shops/auralee-tokyo-aoyama/1.jpg",
+      "images/shops/auralee-tokyo-aoyama/2.jpg",
+      "images/shops/auralee-tokyo-aoyama/3.jpg"
+    ],
+    "attributions": [
+      "AURALEE TOKYO",
+      "Henry Noh"
+    ]
+  },
+  "n-hoolywood-aoyama": {
+    "place_id": "ChIJd9vgg6GMGGARWBwV96Byhuk",
+    "google_maps_uri": "https://maps.google.com/?cid=16827263093382126680&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.8,
+    "user_rating_count": 52,
+    "image_paths": [
+      "images/shops/n-hoolywood-aoyama/1.jpg",
+      "images/shops/n-hoolywood-aoyama/2.jpg",
+      "images/shops/n-hoolywood-aoyama/3.jpg"
+    ],
+    "attributions": [
+      "A R",
+      "MISTER HOLLYWOOD",
+      "ごりらー"
+    ]
+  },
+  "wacko-maria-paradise-tokyo": {
+    "place_id": "ChIJhX3J1lKLGGARH8pwOcYbj-M",
+    "google_maps_uri": "https://maps.google.com/?cid=16397355306460432927&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.2,
+    "user_rating_count": 104,
+    "image_paths": [
+      "images/shops/wacko-maria-paradise-tokyo/1.jpg",
+      "images/shops/wacko-maria-paradise-tokyo/2.jpg",
+      "images/shops/wacko-maria-paradise-tokyo/3.jpg"
+    ],
+    "attributions": [
+      "さへきひろのぶ",
+      "Sonic yjr",
+      "二馬"
+    ]
+  },
+  "neighborhood-harajuku": {
+    "place_id": "ChIJzdgvf6OMGGARnxNSOWekExE",
+    "google_maps_uri": "https://maps.google.com/?cid=1230507886452544415&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 3.4,
+    "user_rating_count": 204,
+    "image_paths": [
+      "images/shops/neighborhood-harajuku/1.jpg",
+      "images/shops/neighborhood-harajuku/2.jpg",
+      "images/shops/neighborhood-harajuku/3.jpg"
+    ],
+    "attributions": [
+      "Google Maps User 2025",
+      "Cheng-Ming Chao (Kein)",
+      "Kin Cheung"
+    ]
+  },
+  "wmv-visvim-nakameguro": {
+    "place_id": "ChIJoS2MBZ6LGGARD2zyImsEo1o",
+    "google_maps_uri": "https://maps.google.com/?cid=6531068742811675663&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+    "rating": 4.1,
+    "user_rating_count": 35,
+    "image_paths": [
+      "images/shops/wmv-visvim-nakameguro/1.jpg",
+      "images/shops/wmv-visvim-nakameguro/2.jpg",
+      "images/shops/wmv-visvim-nakameguro/3.jpg"
+    ],
+    "attributions": [
+      "美音みお",
+      "Hyunkyu Choi"
+    ]
   }
 };
